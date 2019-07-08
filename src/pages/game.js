@@ -7,7 +7,7 @@ import Grid from '../components/game/grid';
 const mines = [{ x: 2, y: 3 }, { x: 3, y: 3 }];
 const IndexPage = () => (
   <Layout>
-    <SEO title="Game" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Game" keywords={[`gatsby`, `game`, `react`]} />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>

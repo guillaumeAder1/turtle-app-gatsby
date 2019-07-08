@@ -54,7 +54,7 @@ class Grid extends React.Component {
             return (
               <div key={i} className="row-container">
                 {col.map((el, ind) => {
-                  const type = this.getType(i + 1, ind + 1);
+                  const type = this.getType(ind + 1, i + 1);
                   return <Cell type={type} key={ind} x={ind + 1} y={i + 1} />;
                 })}
               </div>
