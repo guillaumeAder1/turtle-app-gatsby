@@ -9,7 +9,8 @@ import { toggleDrawer as toggleDrawerAction } from '../state/app';
 
 import Header from './header';
 import Drawer from './drawer';
-import './layout.css';
+import '../style/layout.css';
+import '../style/custom.css';
 
 const Container = styled.main`
   width: 100vw;

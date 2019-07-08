@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { toggleDrawer as toggleDrawerAction } from '../state/app';
+import Menu from './menu'
 
 const Paper = styled.aside`
   position: fixed;
@@ -35,7 +36,11 @@ const Item = styled(Link)`
   cursor: pointer;
 `;
 
-const items = [{ url: '/', name: 'Home' }, { url: '/page-2/', name: 'Page 2' }];
+const items = [
+  { url: '/', name: 'Home' }, 
+  { url: '/page-2/', name: 'Page 2' },
+  { url: '/game/', name: 'Game'}
+];
 
 const Drawer = ({ isDrawerOpen, toggleDrawer }) => (
   <Paper isDrawerOpen={isDrawerOpen}>

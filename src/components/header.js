@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { connect } from 'react-redux';
 import { toggleDrawer as toggleDrawerAction } from '../state/app';
 import Hamburger from './hamburger';
+import Menu from './menu'
 
 const MenuIcon = styled.a`
   display: flex;
@@ -62,6 +63,7 @@ const Header = ({ isDrawerOpen, toggleDrawer, siteTitle }) => (
       </MenuIcon>
     </Top>
     <Navbar isDrawerOpen={isDrawerOpen}>
+     
       <Link to="/" css={{ textDecoration: 'none' }}>
         <Title>{siteTitle}</Title>
       </Link>
