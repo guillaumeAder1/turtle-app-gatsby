@@ -1,64 +1,69 @@
-import React from 'react'
-import Cell from './cell'
-import Control from './controls'
+import React from 'react';
+import Cell from './cell';
+import Control from './controls';
+
+const toMap = arr => {
+  const map = {};
+  for (var i in arr) {
+    const str = `${arr[i].x}_${arr[i].y}`;
+    map[str] = 1;
+  }
+  return map;
+};
 class Grid extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      turtle: '1_1',
-      mines: {
-        '2_1': 1,
-        '3_1': 1
-      }
-    }
+      turtle: this.props.turtle,
+      mines: this.props.mines,
+      minesMap: toMap(this.props.mines),
+    };
   }
-  componentDidMount () {
-    console.log(this.props)
+  componentDidMount() {
+    console.log(this.props);
   }
-  transformPos (x,y) {
-    return `${x}_${y}`
+  transformPos({ x, y }) {
+    return `${x}_${y}`;
   }
   getType(x, y) {
-    const posStr = this.transformPos(x,y)
-    if(posStr === this.state.turtle) {
-      return 'turtle'
-    } else if (this.state.mines[posStr]) {
-      return 'mine'
+    const posStr = this.transformPos({ x, y });
+    if (posStr === this.transformPos(this.state.turtle)) {
+      return 'turtle';
+    } else if (this.state.minesMap[posStr]) {
+      return 'mine';
     } else {
-      return 'cell'
+      return 'cell';
     }
   }
-  updateTurtle (evt) {
-    console.log(evt)
-    if(evt === 'move') {
-      this.setState({ turtle: '1_3' })
+  updateTurtle(evt) {
+    console.log(evt);
+    if (evt === 'move') {
+      const { x, y } = this.state.turtle;
+      this.setState({ turtle: { x: x + 1, y } });
     }
   }
 
-  render () {
-    const col = new Array(5).fill(null);
-    const row = new Array(3).fill(null);
+  render() {
+    const { h, w } = this.props.size;
+    const col = new Array(h).fill(null);
+    const row = new Array(w).fill(null);
     return (
       <React.Fragment>
         <div className="grid">
-          { 
-            row.map((e,i) => {
-              return <div key={i} className="row-container">
-                { 
-                  col.map((el, ind) => {
-                    const type = this.getType(i+1, ind+1)
-                    return <Cell type={type} key={ind} x={i+1} y={ind+1}/>
-                  })
-                }
+          {row.map((e, i) => {
+            return (
+              <div key={i} className="row-container">
+                {col.map((el, ind) => {
+                  const type = this.getType(i + 1, ind + 1);
+                  return <Cell type={type} key={ind} x={ind + 1} y={i + 1} />;
+                })}
               </div>
-            }) 
-          }
+            );
+          })}
         </div>
-        <Control callback={(e) => this.updateTurtle(e)} />
+        <Control callback={e => this.updateTurtle(e)} />
       </React.Fragment>
-
-    
-    )
+    );
   }
 }
-export default Grid
+export default Grid;
