@@ -73,6 +73,8 @@ class Grid extends React.Component {
   }
 }
 Grid.propTypes = {
-  size: PropTypes.object,
+  size: PropTypes.object.isRequired,
+  turtle: PropTypes.object.isRequired,
+  mines: PropTypes.array.isRequired,
 };
 export default Grid;
