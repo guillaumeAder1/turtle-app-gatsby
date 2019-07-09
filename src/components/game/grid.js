@@ -1,6 +1,7 @@
 import React from 'react';
 import Cell from './cell';
 import Control from './controls';
+import PropTypes from 'prop-types';
 
 const toMap = arr => {
   const map = {};
@@ -10,11 +11,11 @@ const toMap = arr => {
   }
   return map;
 };
-const outOfBound = ({x,y}, {h,w}) => {
-  const wValid = x > 0 && x <= w
-  const hValid = y > 0 && y <= h
-  return (wValid && hValid) || false 
-}
+const outOfBound = ({ x, y }, { h, w }) => {
+  const wValid = x > 0 && x <= w;
+  const hValid = y > 0 && y <= h;
+  return (wValid && hValid) || false;
+};
 class Grid extends React.Component {
   constructor(props) {
     super(props);
@@ -71,4 +72,7 @@ class Grid extends React.Component {
     );
   }
 }
+Grid.propTypes = {
+  size: PropTypes.object,
+};
 export default Grid;
