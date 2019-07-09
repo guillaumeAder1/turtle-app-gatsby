@@ -37,7 +37,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "test": "jest",
     "format": "eslint src --fix"
   },
   "repository": {
@@ -48,9 +48,14 @@
     "url": "https://github.com/caki0915/gatsby-starter-redux/issues"
   },
   "devDependencies": {
+    "babel-jest": "^24.8.0",
+    "babel-preset-gatsby": "^0.2.1",
     "eslint": "^5.14.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.16.4",
+    "react-test-renderer": "^16.8.6"
   }
 }
