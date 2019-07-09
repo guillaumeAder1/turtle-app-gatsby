@@ -10,6 +10,11 @@ const toMap = arr => {
   }
   return map;
 };
+const outOfBound = ({x,y}, {h,w}) => {
+  const wValid = x > 0 && x <= w
+  const hValid = y > 0 && y <= h
+  return (wValid && hValid) || false 
+}
 class Grid extends React.Component {
   constructor(props) {
     super(props);
