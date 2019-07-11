@@ -13,6 +13,20 @@ const toMap = arr => {
   }
   return map;
 };
+const calculatePos = (turtle, dir) => {
+  const { x, y } = turtle;
+  let newPos;
+  if (dir === 0) {
+    newPos = { x, y: y - 1 };
+  } else if (dir === 90) {
+    newPos = { x: x + 1, y };
+  } else if (dir === 180) {
+    newPos = { x, y: y + 1 };
+  } else if (dir === 270) {
+    newPos = { x: x - 1, y };
+  }
+  return newPos;
+};
 const outOfBound = ({ x, y }, { h, w }) => {
   const wValid = x > 0 && x <= w;
   const hValid = y > 0 && y <= h;
@@ -47,8 +61,9 @@ class Grid extends React.Component {
   updateTurtle(evt) {
     console.log(evt);
     if (evt === 'move') {
-      const { x, y } = this.state.turtle;
-      this.setState({ turtle: { x: x + 1, y } });
+      this.setState({
+        turtle: calculatePos(this.state.turtle, this.props._direction),
+      });
     } else {
       console.log(this);
       this.props._rotate();

@@ -1,5 +1,5 @@
 const initialState = {
-  direction: 90,
+  direction: 0,
 };
 
 const ROTATE = 'ROTATE';
