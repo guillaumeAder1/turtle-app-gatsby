@@ -65,8 +65,10 @@ class Grid extends React.Component {
         turtle: calculatePos(this.state.turtle, this.props._direction),
       });
     } else {
-      console.log(this);
       this.props._rotate();
+    }
+    if (outOfBound(this.state.turtle, this.props.size)) {
+      // alert('OOB');
     }
   }
 
