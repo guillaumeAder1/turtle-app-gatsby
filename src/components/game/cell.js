@@ -1,27 +1,32 @@
-import React, { Component } from 'react'
-import Img from '../../images/turtle.png'
+import React, { Component } from 'react';
+import Turtle from './turtle';
+// import Img from '../../images/turtle.png'
 class Cell extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
-  clickCell () {
-    console.log(this.props)
+  clickCell() {
+    console.log(this.props);
   }
 
-  getImg (type) {
-    if ( type === 'turtle') {
-      return <img src={Img} />
+  getImg(type) {
+    if (type === 'turtle') {
+      return <Turtle />;
     } else if (type === 'mine') {
-      return 'X'
+      return 'X';
     } else {
-      return ''
+      return '';
     }
   }
 
-  render () {
-    const img =  this.getImg(this.props.type)
-    return (<div onClick={() => this.clickCell()} className="cell">{img}</div>)
+  render() {
+    const img = this.getImg(this.props.type);
+    return (
+      <div onClick={() => this.clickCell()} className="cell">
+        {img}
+      </div>
+    );
   }
 }
 
-export default Cell
+export default Cell;
