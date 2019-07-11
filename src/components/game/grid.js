@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { rotate as rotateTurtle } from '../../state/game';
 import { connect } from 'react-redux';
 
-
 const toMap = arr => {
   const map = {};
   for (var i in arr) {
@@ -26,7 +25,7 @@ class Grid extends React.Component {
       turtle: this.props.turtle,
       mines: this.props.mines,
       minesMap: toMap(this.props.mines),
-      direction: 0
+      direction: this.props._direction,
     };
   }
   componentDidMount() {
@@ -50,6 +49,9 @@ class Grid extends React.Component {
     if (evt === 'move') {
       const { x, y } = this.state.turtle;
       this.setState({ turtle: { x: x + 1, y } });
+    } else {
+      console.log(this);
+      this.props._rotate();
     }
   }
 
@@ -65,7 +67,7 @@ class Grid extends React.Component {
               <div key={i} className="row-container">
                 {col.map((el, ind) => {
                   const type = this.getType(ind + 1, i + 1);
-                  return <Cell  type={type} key={ind} x={ind + 1} y={i + 1} />;
+                  return <Cell type={type} key={ind} x={ind + 1} y={i + 1} />;
                 })}
               </div>
             );
