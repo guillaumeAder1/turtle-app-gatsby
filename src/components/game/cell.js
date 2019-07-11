@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Img from '../../images/turtle.png'
 class Cell extends Component {
   constructor(props) {
     super(props)
@@ -9,7 +10,7 @@ class Cell extends Component {
 
   getImg (type) {
     if ( type === 'turtle') {
-      return 'Q'
+      return <img src={Img} />
     } else if (type === 'mine') {
       return 'X'
     } else {
