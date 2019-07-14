@@ -13,17 +13,20 @@ class Grid extends React.Component {
       mines: this.props.mines,
       minesMap: toMap(this.props.mines),
       direction: this.props._direction,
+      col: new Array(this.props.size.h).fill(null),
+      row: new Array(this.props.size.w).fill(null),
     };
-  }
-  componentDidMount() {
-    console.log(this.props);
+    // const { h, w } = this.props.size;
+    // const col = new Array(h).fill(null);
+    // const row = new Array(w).fill(null);
   }
   transformPos({ x, y }) {
     return `${x}_${y}`;
   }
   getType(x, y) {
     const posStr = this.transformPos({ x, y });
-    if (posStr === this.transformPos(this.state.turtle)) {
+    const turtlePos = this.transformPos(this.state.turtle);
+    if (posStr === turtlePos) {
       return 'turtle';
     } else if (this.state.minesMap[posStr]) {
       return 'mine';
@@ -32,7 +35,6 @@ class Grid extends React.Component {
     }
   }
   updateTurtle(evt) {
-    console.log(evt);
     if (evt === 'move') {
       this.setState({
         turtle: calculatePos(this.state.turtle, this.props._direction),
@@ -40,22 +42,18 @@ class Grid extends React.Component {
     } else {
       this.props._rotate();
     }
-    if (outOfBound(this.state.turtle, this.props.size)) {
-      // alert('OOB');
-    }
   }
 
   render() {
-    const { h, w } = this.props.size;
-    const col = new Array(h).fill(null);
-    const row = new Array(w).fill(null);
+    const isOut = outOfBound(this.state.turtle, this.props.size);
     return (
       <React.Fragment>
+        {isOut && <div>OUTSIDE</div>}
         <div className="grid">
-          {row.map((e, i) => {
+          {this.state.row.map((e, i) => {
             return (
               <div key={i} className="row-container">
-                {col.map((el, ind) => {
+                {this.state.col.map((el, ind) => {
                   const type = this.getType(ind + 1, i + 1);
                   return <Cell type={type} key={ind} x={ind + 1} y={i + 1} />;
                 })}
