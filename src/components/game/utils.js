@@ -23,5 +23,5 @@ export const calculatePos = (turtle, dir) => {
 export const outOfBound = ({ x, y }, { h, w }) => {
   const wValid = x > 0 && x <= w;
   const hValid = y > 0 && y <= h;
-  return (wValid && hValid) || false;
+  return !wValid || !hValid;
 };
