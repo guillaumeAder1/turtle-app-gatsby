@@ -13,6 +13,7 @@ class Grid extends React.Component {
       mines: this.props.mines,
       minesMap: toMap(this.props.mines),
       direction: this.props._direction,
+      cellVisited: [],
       col: new Array(this.props.size.h).fill(null),
       row: new Array(this.props.size.w).fill(null),
     };
@@ -30,6 +31,8 @@ class Grid extends React.Component {
       return 'turtle';
     } else if (this.state.minesMap[posStr]) {
       return 'mine';
+    } else if (this.state.cellVisited.indexOf(posStr) > -1) {
+      return 'visited'
     } else {
       return 'cell';
     }
@@ -38,6 +41,7 @@ class Grid extends React.Component {
     if (evt === 'move') {
       this.setState({
         turtle: calculatePos(this.state.turtle, this.props._direction),
+        cellVisited: [...this.state.cellVisited, this.transformPos(this.state.turtle) ]
       });
     } else {
       this.props._rotate();

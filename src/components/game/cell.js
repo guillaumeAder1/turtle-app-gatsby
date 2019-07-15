@@ -14,6 +14,8 @@ class Cell extends Component {
       return <Turtle />;
     } else if (type === 'mine') {
       return 'X';
+    } else if (type === 'visited') {
+      return '0'
     } else {
       return '';
     }
