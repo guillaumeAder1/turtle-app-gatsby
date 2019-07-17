@@ -25,3 +25,8 @@ export const outOfBound = ({ x, y }, { h, w }) => {
   const hValid = y > 0 && y <= h;
   return !wValid || !hValid;
 };
+
+
+export const collision = (posStr, map) => {
+  return !!map[posStr]
+}

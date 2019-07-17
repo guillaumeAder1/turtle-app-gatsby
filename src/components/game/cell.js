@@ -15,8 +15,7 @@ class Cell extends Component {
       return {
         comp,
         class: 'turtle'
-      } 
-     
+      }      
     } else if (type === 'mine') {
       const comp =  <Mine />
       return {
@@ -24,7 +23,7 @@ class Cell extends Component {
         class: 'mine'
       }
     } else if (type === 'visited') {
-      const comp = (<div>0</div>)
+      const comp = (<div></div>)
       return {
         comp,
         class: 'visited'

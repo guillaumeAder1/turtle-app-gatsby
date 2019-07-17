@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Cell from './cell';
 import Control from './controls';
 import PropTypes from 'prop-types';
 import { rotate as rotateTurtle } from '../../state/game';
 import { connect } from 'react-redux';
-import { toMap, outOfBound, calculatePos } from './utils';
+import { toMap, outOfBound, calculatePos, collision } from './utils';
 class Grid extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +17,6 @@ class Grid extends React.Component {
       col: new Array(this.props.size.h).fill(null),
       row: new Array(this.props.size.w).fill(null),
     };
-    // const { h, w } = this.props.size;
-    // const col = new Array(h).fill(null);
-    // const row = new Array(w).fill(null);
   }
   transformPos({ x, y }) {
     return `${x}_${y}`;
@@ -27,10 +24,10 @@ class Grid extends React.Component {
   getType(x, y) {
     const posStr = this.transformPos({ x, y });
     const turtlePos = this.transformPos(this.state.turtle);
-    if (posStr === turtlePos) {
-      return 'turtle';
-    } else if (this.state.minesMap[posStr]) {
+    if (this.state.minesMap[posStr] && posStr === turtlePos) {
       return 'mine';
+    } else if (posStr === turtlePos) {
+      return 'turtle';
     } else if (this.state.cellVisited.indexOf(posStr) > -1) {
       return 'visited'
     } else {
@@ -47,12 +44,16 @@ class Grid extends React.Component {
       this.props._rotate();
     }
   }
+  
 
   render() {
     const isOut = outOfBound(this.state.turtle, this.props.size);
+    const hitMine = collision(this.transformPos(this.state.turtle), this.state.minesMap)
     return (
-      <React.Fragment>
+      <Fragment>
         {isOut && <div>OUTSIDE</div>}
+        {hitMine && <div>COLLISION</div>}
+        
         <div className="grid">
           {this.state.col.map((e, i) => {
             return (
@@ -66,7 +67,7 @@ class Grid extends React.Component {
           })}
         </div>
         <Control callback={e => this.updateTurtle(e)} />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
