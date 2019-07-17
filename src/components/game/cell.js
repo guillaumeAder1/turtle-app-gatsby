@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Turtle from './turtle';
-// import Img from '../../images/turtle.png'
+import Mine from './mine';
 class Cell extends Component {
   constructor(props) {
     super(props);
@@ -9,23 +9,40 @@ class Cell extends Component {
     console.log(this.props);
   }
 
-  getImg(type) {
+  getComp(type) {
     if (type === 'turtle') {
-      return <Turtle />;
+      const comp =  <Turtle />;
+      return {
+        comp,
+        class: 'turtle'
+      } 
+     
     } else if (type === 'mine') {
-      return 'X';
+      const comp =  <Mine />
+      return {
+        comp,
+        class: 'mine'
+      }
     } else if (type === 'visited') {
-      return '0'
+      const comp = (<div>0</div>)
+      return {
+        comp,
+        class: 'visited'
+      }
     } else {
-      return '';
+      const comp = (<div></div>)
+      return {
+        comp,
+        class: 'empty'
+      }
     }
   }
 
   render() {
-    const img = this.getImg(this.props.type);
+    const el = this.getComp(this.props.type);
     return (
-      <div onClick={() => this.clickCell()} className="cell">
-        {img}
+      <div onClick={() => this.clickCell()} className={`cell ${el.class}`}>
+        {el.comp}
       </div>
     );
   }

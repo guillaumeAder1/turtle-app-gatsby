@@ -14,5 +14,8 @@
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  line-height: 60px;      
+  line-height: 60px;
+}
+.cell.empty{
+  background: black;
 }
