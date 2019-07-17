@@ -16,27 +16,29 @@
   line-height: 60px;
 }
 
-.mask.turtle, .mask.visited, .mask.mine {
-  /* background:rgba(255,255,255,0); */
+.mask.turtle, .mask.visited {
+  background:rgba(255,255,255,0);
 } 
 
 .mask {
   position: absolute;
   width: inherit;
   height: inherit;
-  background:rgba(208, 208, 208, 0.1);
+  background:rgba(208, 208, 208, 1);
   border: 1px solid grey;
+  transition: background 0.1s;
+  /* animation: showHide 500ms; */
   
 }
 .mask.display{
-  animation-name: showHide;
-  animation-duration: 0.5s;
+  background: transparent;
+  /* animation-name: showHide;
+  animation-duration: 0.5s; */
 }
 
 @keyframes showHide {
   from {
     background: inherit;
-  
   }
   to{
     background:rgba(208, 208, 208, 0.1);

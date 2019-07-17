@@ -25,9 +25,11 @@ class Grid extends React.Component {
   getType(x, y) {
     const posStr = this.transformPos({ x, y });
     const turtlePos = this.transformPos(this.state.turtle);
-    if (this.state.minesMap[posStr] && posStr === turtlePos) {
+    if(posStr === turtlePos && this.state.minesMap[posStr]) {
+      return 'collision'
+    } else if (this.state.minesMap[posStr]) {
       return 'mine';
-    } else if (posStr === turtlePos) {
+    }  else if (posStr === turtlePos) {
       return 'turtle';
     } else if (this.state.cellVisited.indexOf(posStr) > -1) {
       return 'visited'

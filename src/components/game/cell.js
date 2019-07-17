@@ -16,6 +16,12 @@ class Cell extends Component {
         comp,
         class: 'turtle'
       }      
+    } else if (type === 'collision') {
+      const comp =  <Mine />
+      return {
+        comp,
+        class: 'mine visited'
+      }
     } else if (type === 'mine') {
       const comp =  <Mine />
       return {
