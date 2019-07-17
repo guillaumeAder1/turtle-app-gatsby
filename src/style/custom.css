@@ -26,21 +26,21 @@
   height: inherit;
   background:rgba(208, 208, 208, 1);
   border: 1px solid grey;
-  transition: background 0.1s;
-  /* animation: showHide 500ms; */
+  /* transition: background 0.1s; */
+  /* animation: showHide 1s; */
   
 }
 .mask.display{
-  background: transparent;
-  /* animation-name: showHide;
-  animation-duration: 0.5s; */
+  /* background: transparent; */
+  animation-name: showHide;
+  animation-duration: 1s;
 }
 
 @keyframes showHide {
   from {
-    background: inherit;
+    background: transparent ;
   }
   to{
-    background:rgba(208, 208, 208, 0.1);
+    background:rgba(208, 208, 208, 0.98);
   }
 }

@@ -14,12 +14,11 @@ const Control = props => {
     if (count > 0) {
       const allMask = document.querySelectorAll('.cell .mask')
       allMask.forEach( (e, i) => {
-        setTimeout( () => e.classList.add('display'), 10 * i)
-        setTimeout( () => e.classList.remove('display'), 25 * i)
-      })
-      // setTimeout(() => {
-      //   allMask.forEach( e => e.classList.remove('display') )
-      // }, 1000)
+        setTimeout( () => e.classList.add('display'), 50 * i)   
+        setTimeout(() => {
+          allMask.forEach( e => e.classList.remove('display') )
+        }, allMask.length + 50 * i)     
+      })     
     }
   }
   
@@ -27,7 +26,7 @@ const Control = props => {
     <div>
       <button onClick={() => move()}>Move</button>
       <button onClick={() => rotate()}>Rotate</button>      
-      <button onClick={() => showHide() }>show/hide {count}</button>
+      <button onClick={() => showHide() } disabled={ count > 0 ? false : true }>show/hide {count}</button>
     </div>
   )
 }
