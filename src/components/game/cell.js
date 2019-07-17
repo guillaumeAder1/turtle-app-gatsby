@@ -40,8 +40,9 @@ class Cell extends Component {
   render() {
     const el = this.getComp(this.props.type);
     return (
-      <div onClick={() => this.clickCell()} className={`cell ${el.class}`}>
-        {el.comp}
+      <div onClick={() => this.clickCell()} className='cell'>
+        <div className={`mask ${el.class}`}></div>
+         {el.comp}
       </div>
     );
   }

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { rotate as rotateTurtle } from '../../state/game';
 import { connect } from 'react-redux';
 import { toMap, outOfBound, calculatePos, collision } from './utils';
+
 class Grid extends React.Component {
   constructor(props) {
     super(props);
@@ -34,6 +35,7 @@ class Grid extends React.Component {
       return 'cell';
     }
   }
+  componentDidUpdate() {  }
   updateTurtle(evt) {
     if (evt === 'move') {
       this.setState({
