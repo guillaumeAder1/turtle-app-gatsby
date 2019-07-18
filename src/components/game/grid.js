@@ -43,14 +43,15 @@ class Grid extends React.Component {
     if (evt === 'move') {
       this.setState({
         turtle: calculatePos(this.state.turtle, this.props._direction),
-        cellVisited: [...this.state.cellVisited, this.transformPos(this.state.turtle) ]
+        cellVisited: [...this.state.cellVisited, this.transformPos(this.state.turtle) ],
+        commands: [...this.state.commands, evt.charAt(0)]
       });
     } else {
+      this.setState({
+        commands: [...this.state.commands, evt.charAt(0)]
+      })
       this.props._rotate();
     }
-    this.setState({
-      commands: [...this.state.commands, evt.charAt(0)]
-    })
   }
   
 
@@ -77,7 +78,7 @@ class Grid extends React.Component {
         <Control callback={e => this.updateTurtle(e)} />
         {this.state.commands.length > 0 && 
           <Fragment>
-            <h3>Commands ran</h3>
+            <h3>Commands</h3>
             <code>{this.state.commands.map(e => `'${e}'`).join(', ')}</code>
           </Fragment>         
         }
