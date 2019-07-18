@@ -30,3 +30,9 @@ export const outOfBound = ({ x, y }, { h, w }) => {
 export const collision = (posStr, map) => {
   return !!map[posStr]
 }
+
+export const randomRange = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
