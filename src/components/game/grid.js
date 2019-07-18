@@ -17,6 +17,7 @@ class Grid extends React.Component {
       cellVisited: [],
       col: new Array(this.props.size.h).fill(null),
       row: new Array(this.props.size.w).fill(null),
+      commands: []
     };
   }
   transformPos({ x, y }) {
@@ -47,6 +48,9 @@ class Grid extends React.Component {
     } else {
       this.props._rotate();
     }
+    this.setState({
+      commands: [...this.state.commands, evt.charAt(0)]
+    })
   }
   
 
@@ -71,6 +75,12 @@ class Grid extends React.Component {
           })}
         </div>
         <Control callback={e => this.updateTurtle(e)} />
+        {this.state.commands.length > 0 && 
+          <Fragment>
+            <h3>Commands ran</h3>
+            <code>{this.state.commands.map(e => `'${e}'`).join(', ')}</code>
+          </Fragment>         
+        }
       </Fragment>
     );
   }

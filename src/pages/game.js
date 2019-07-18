@@ -10,7 +10,7 @@ const IndexPage = () => (
     <SEO title="Game" keywords={[`gatsby`, `game`, `react`]} />
     <h1>Deminor Game</h1>
     <p>Find the exit and take care to the mines...</p>
-    <Grid size={sizeGrid} turtle={{ x: 1, y: 1 }} mines={mines} />
+    <Grid className={`grid-component`} size={sizeGrid} turtle={{ x: 1, y: 1 }} mines={mines} />
   </Layout>
 );
 
