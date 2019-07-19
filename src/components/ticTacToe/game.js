@@ -59,7 +59,11 @@ class Game extends React.Component {
         let cur = this.wining[i][j]
         let row = this.wining[i]
         let player = list
+<<<<<<< HEAD
         if(list.indexOf(cur) > -1) {
+=======
+        if(list[0].indexOf(cur) > -1) {
+>>>>>>> 907966cc8a00bd3565a66f40b085cd30807abfb6
           matches.push(1)
         }
       }
