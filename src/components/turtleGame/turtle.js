@@ -9,4 +9,4 @@ const Turtle = props => {
   return <img style={css} src={Img} />;
 };
 
-export default connect(state => ({ direction: state.game.direction }))(Turtle);
+export default connect(state => ({ direction: state.turtleGame.direction }))(Turtle);

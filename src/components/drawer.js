@@ -39,7 +39,7 @@ const Item = styled(Link)`
 const items = [
   { url: '/', name: 'Home' }, 
   { url: '/page-2/', name: 'Page 2' },
-  { url: '/game/', name: 'Game'}
+  { url: '/turtle-game/', name: 'Turtle Game'}
 ];
 
 const Drawer = ({ isDrawerOpen, toggleDrawer }) => (

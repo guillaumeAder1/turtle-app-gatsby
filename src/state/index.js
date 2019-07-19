@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 import app from './app';
-import game from './game';
+import turtleGame from './turtleGame';
 
-export default combineReducers({app, game} );
+export default combineReducers({app, turtleGame} );

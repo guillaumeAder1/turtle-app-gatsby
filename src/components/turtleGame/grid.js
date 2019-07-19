@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import Cell from './cell';
 import Control from './controls';
 import PropTypes from 'prop-types';
-import { rotate as rotateTurtle } from '../../state/game';
+import { rotate as rotateTurtle } from '../../state/turtleGame';
 import { connect } from 'react-redux';
 import { toMap, outOfBound, calculatePos, collision } from './utils';
 
@@ -92,6 +92,6 @@ Grid.propTypes = {
   mines: PropTypes.array.isRequired,
 };
 export default connect(
-  state => ({ _direction: state.game.direction }),
+  state => ({ _direction: state.turtleGame.direction }),
   dispatch => ({ _rotate: () => dispatch(rotateTurtle()) }),
 )(Grid);
