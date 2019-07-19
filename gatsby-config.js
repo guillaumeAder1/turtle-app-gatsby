@@ -19,6 +19,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
+        pathPrefix: '/turtle-app-gatsby',
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
