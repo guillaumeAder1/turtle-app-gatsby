@@ -58,11 +58,11 @@ const Layout = ({ children, isDrawerOpen, toggleDrawer }) => (
         <Container>
           <Content isDrawerOpen={isDrawerOpen}>
             {children}
-            <footer>
+            {/* <footer>
               © {new Date().getFullYear()}, Built with
               {` `}
               <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </footer>
+            </footer> */}
           </Content>
         </Container>
         <Overlay
