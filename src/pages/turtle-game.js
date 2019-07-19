@@ -13,7 +13,8 @@ const nbrMine = randomRange(2, minesMax/2)
 const mines = new Array(nbrMine).fill(null).map( e => {
   return  { 
     x: randomRange(2, max), 
-    y:randomRange(2, max) } 
+    y: randomRange(2, max) 
+  } 
 })
 console.log(mines)
 
