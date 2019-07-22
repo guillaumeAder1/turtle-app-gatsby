@@ -63,3 +63,7 @@ code{
   line-height: 50px;
   vertical-align: middle;
 }
+
+.memory-game .cell{
+  border:1px solid black;
+}

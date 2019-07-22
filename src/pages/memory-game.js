@@ -7,7 +7,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Game" keywords={[`gatsby`, `Memeory`, `game`]} />
     <h1>Memory</h1>
-    <div>
+    <div className="memory-game">
       <Game />
     </div>
   </Layout>
