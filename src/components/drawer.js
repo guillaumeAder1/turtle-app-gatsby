@@ -40,7 +40,8 @@ const items = [
   { url: '/', name: 'Home' }, 
   { url: '/page-2/', name: 'Page 2' },
   { url: '/turtle-game/', name: 'Turtle Game'},
-  { url: '/tic-tac-toe/', name: 'X & O'}
+  { url: '/tic-tac-toe/', name: 'X & O'},
+  { url: '/memory-game/', name: 'Memory Game'}
 ];
 
 const Drawer = ({ isDrawerOpen, toggleDrawer }) => (
