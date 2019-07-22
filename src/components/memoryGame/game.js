@@ -25,7 +25,7 @@ class Game extends Component {
         .fill(null)
         .map((e, i) => i + 1),
       temp: {},
-      found: {},
+      found: [],
       counter: 0,
       visible: false,
     };
@@ -41,14 +41,30 @@ class Game extends Component {
     } else {
       if (this.state.temp[key].indexOf(e) === -1) {
         this.state.temp[key].push(e);
-        this.setState({
-          temp: { ...this.state.temp },
-          counter: this.state.counter + 1,
-        });
+        this.setState(
+          {
+            temp: { ...this.state.temp },
+            counter: this.state.counter + 1,
+          },
+          () => {
+            this.checkMatch();
+          },
+        );
       }
     }
   }
-
+  checkMatch() {
+    for (let i in this.state.temp) {
+      if (this.state.temp[i].length === 2) {
+        this.setState({
+          found: [...this.state.found, this.state.temp[i]],
+        });
+      }
+    }
+    this.setState({
+      temp: {},
+    });
+  }
   getValue(key) {
     return this.numbers[key];
   }
