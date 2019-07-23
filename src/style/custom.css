@@ -67,3 +67,6 @@ code{
 .memory-game .cell{
   border:1px solid black;
 }
+.memory-game .cell.found {
+  background: lightgray;
+}
