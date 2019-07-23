@@ -1,8 +1,8 @@
-.grid{
+.grid {
   /* border: 1px solid red; */
 }
 
-.row-container{
+.row-container {
   /* border: 1px solid lime; */
   /* margin: 10px; */
 }
@@ -16,21 +16,21 @@
   line-height: 60px;
 }
 
-.mask.turtle, .mask.visited {
-  background:rgba(255,255,255,0);
-} 
+.mask.turtle,
+.mask.visited {
+  background: rgba(255, 255, 255, 0);
+}
 
 .mask {
   position: absolute;
   width: inherit;
   height: inherit;
-  background:rgba(208, 208, 208, 1);
+  background: rgba(208, 208, 208, 1);
   border: 1px solid grey;
   /* transition: background 0.1s; */
   /* animation: showHide 1s; */
-  
 }
-.mask.display{
+.mask.display {
   /* background: transparent; */
   animation-name: showHide;
   animation-duration: 1s;
@@ -38,23 +38,22 @@
 
 @keyframes showHide {
   from {
-    background: transparent ;
+    background: transparent;
   }
-  to{
-    background:rgba(208, 208, 208, 0.98);
+  to {
+    background: rgba(208, 208, 208, 0.98);
   }
 }
 
-code{
+code {
   /* padding: 10px;
   margin: 10px 0; */
 }
 
-
-.container{
+.container {
   width: 150px;
 }
-.cells{
+.cells {
   width: 50px;
   height: 50px;
   border: 1px solid black;
@@ -64,9 +63,9 @@ code{
   vertical-align: middle;
 }
 
-.memory-game .cell{
-  border:1px solid black;
+.memory-game .cell {
+  border: 1px solid black;
 }
-.memory-game .cell.found {
+.memory-game .cell.hide {
   background: lightgray;
 }

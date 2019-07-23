@@ -27,7 +27,6 @@ class Game extends Component {
   select(e) {
     const key = this.getValue(e);
     const len = Object.keys(this.state.temp).length;
-    // first click
     if (!this.state.temp[key]) {
       this.state.temp[key] = [e];
       this.setState(
@@ -64,32 +63,14 @@ class Game extends Component {
                 }
               }
             }
-            this.setState(
-              {
-                temp: {},
-                counter: 0,
-                found: this.state.found.concat(match),
-              },
-              () => {
-                console.log(this.numbers, this.state.found);
-              },
-            );
+            this.setState({
+              temp: {},
+              counter: 0,
+              found: this.state.found.concat(match),
+            });
           }, 1000);
         },
       );
-      return;
-      let found;
-      if (this.state.temp[key] && this.state.temp[key].indexOf(e) === -1) {
-        found = key;
-        for (let i in this.numbers) {
-          if (this.numbers[i] === key) {
-            delete this.numbers[i];
-          }
-        }
-        console.log(this.numbers);
-      } else {
-        found = [];
-      }
     }
   }
   getValue(key) {
@@ -102,7 +83,11 @@ class Game extends Component {
     );
     return this.state.visible || isSelected ? this.numbers[val] : '';
   }
-  isVisible() {
+  isVisible(e) {
+    console.log(this.getValue(e));
+    if (!this.getValue(e)) {
+      return 'hide';
+    }
     return '';
   }
   componentDidMount() {
