@@ -1,9 +1,16 @@
 import React, { Component, Fragment } from 'react';
-import { symbol } from 'prop-types';
-
+import { randomRange } from '../turtleGame/utils';
 class Game extends Component {
   constructor(props) {
     super(props);
+    this.str = new Array(26)
+      .fill(null)
+      .map((e, i) => String.fromCharCode(65 + i));
+    // this.maxPair = randomRange(1, 4);
+    // this.numbers = {};
+    // for (var i = 1; i < this.maxPair + 1; i++) {
+    //   this.numbers[i] = this.str[i];
+    // }
     this.numbers = {
       1: 'X',
       2: 'Y',
@@ -26,7 +33,6 @@ class Game extends Component {
   }
   select(e) {
     const key = this.getValue(e);
-    const len = Object.keys(this.state.temp).length;
     if (!this.state.temp[key]) {
       this.state.temp[key] = [e];
       this.setState(
@@ -83,8 +89,12 @@ class Game extends Component {
     );
     return this.state.visible || isSelected ? this.numbers[val] : '';
   }
+  /**
+   *
+   * @param {val} e
+   * add css class if element is not found
+   */
   isVisible(e) {
-    console.log(this.getValue(e));
     if (!this.getValue(e)) {
       return 'hide';
     }
@@ -95,7 +105,7 @@ class Game extends Component {
       this.setState({
         visible: false,
       });
-    }, 2000);
+    }, 4000);
   }
 
   render() {
