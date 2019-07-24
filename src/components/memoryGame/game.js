@@ -1,26 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { randomRange } from '../turtleGame/utils';
+import { randomRange, createRandomNumber } from '../turtleGame/utils';
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.str = new Array(26)
-      .fill(null)
-      .map((e, i) => String.fromCharCode(65 + i));
-    // this.maxPair = randomRange(1, 4);
-    // this.numbers = {};
-    // for (var i = 1; i < this.maxPair + 1; i++) {
-    //   this.numbers[i] = this.str[i];
-    // }
-    this.numbers = {
-      1: 'X',
-      2: 'Y',
-      3: 'W',
-      4: 'Z',
-      5: 'Y',
-      6: 'X',
-      7: 'Z',
-      8: 'W',
-    };
+    this.numbers = createRandomNumber();
     this.state = {
       gridLength: new Array(Object.keys(this.numbers).length)
         .fill(null)
@@ -31,10 +14,10 @@ class Game extends Component {
       visible: true,
     };
   }
-  select(e) {
-    const key = this.getValue(e);
+  select(val) {
+    const key = this.getValue(val);
     if (!this.state.temp[key]) {
-      this.state.temp[key] = [e];
+      this.state.temp[key] = [val];
       this.setState(
         {
           temp: { ...this.state.temp },
@@ -51,8 +34,8 @@ class Game extends Component {
           }
         },
       );
-    } else if (this.state.temp[key][0] !== e) {
-      this.state.temp[key].push(e);
+    } else if (this.state.temp[key][0] !== val) {
+      this.state.temp[key].push(val);
       this.setState(
         {
           temp: { ...this.state.temp },
